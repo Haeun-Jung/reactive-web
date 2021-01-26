@@ -277,12 +277,17 @@ section {
 
 .class-desc {
   width: 100%;
+  color: #545e6f;
   margin-top: 0.2rem;
+}
+
+.class-desc:hover {
+  color: #2186c4;
 }
 
 .class-title {
   font-weight: bold;
-  color: #545e6f;
+  color: inherit;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -292,7 +297,7 @@ section {
 
 .class-detail {
   font-size: 0.9rem;
-  color: #545e6f;
+  color: inherit;
   line-height: 1.5rem;
 }
 
@@ -367,6 +372,14 @@ footer {
   opacity: 1;
   visibility: visible;
   background-color: rgb(47, 48, 49);
+}
+
+ul li img:hover {
+  cursor: grab;
+}
+
+ul li img:active {
+  cursor: grabbing;
 }
 
 @media only screen and (min-width: 1200px) {
