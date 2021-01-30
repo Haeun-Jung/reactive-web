@@ -411,7 +411,16 @@ ul li img:active {
 
 @media only screen and (max-width: 480px) {
   .title {
+    color: #fff;
     font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+  }
+  .message {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 2rem;
   }
   .class-skill {
     display: none;

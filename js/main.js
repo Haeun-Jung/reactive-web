@@ -116,6 +116,7 @@ let nowActiveLi;
 let mouseStart;
 
 function processTouchMove(event) {
+  // 해당 요소가 가진 고유동작 중단시키기
   event.preventDefault();
   // currentActiveLi: class-list 에서 data-position 으로 현재 카드 위치를 알아냄
   // touchstartX: 최초 요소의 x 좌표값
@@ -132,7 +133,7 @@ function processTouchMove(event) {
 
 function processTouchStart(event) {
   mouseStart = true;
-  // 해당 태그가 가진 고유동작 중단시키기(이미지만 드래그로 이동하는 동작 중단)
+  // 해당 요소가 가진 고유동작 중단시키기(이미지만 드래그로 이동하는 동작 중단)
   event.preventDefault();
   touchstartX = event.clientX || event.touches[0].screenX;
   currentImg = event.target;
@@ -141,6 +142,7 @@ function processTouchStart(event) {
   currentImg.addEventListener("mousemove", processTouchMove);
   currentImg.addEventListener("mouseup", processTouchEnd);
 
+  // 모바일 터치 지원
   currentImg.addEventListener("touchmove", processTouchMove);
   currentImg.addEventListener("touchend", processTouchEnd);
 
@@ -149,12 +151,14 @@ function processTouchStart(event) {
 }
 
 function processTouchEnd(event) {
+  // 해당 요소가 가진 고유동작 중단시키기
   event.preventDefault();
 
   if (mouseStart) {
     currentImg.removeEventListener("mousemove", processTouchMove);
     currentImg.removeEventListener("mouseup", processTouchEnd);
 
+    // 모바일 터치 지원
     currentImg.removeEventListener("touchmove", processTouchMove);
     currentImg.removeEventListener("touchend", processTouchEnd);
 
@@ -191,5 +195,6 @@ const classImgLists = document.querySelectorAll("ul li img");
 for (let i = 0; i < classImgLists.length; i++) {
   // 해당 요소에 마우스를 누르면 드래그를 시작할 수 있으므로 이벤트 걸기
   classImgLists[i].addEventListener("mousedown", processTouchStart);
+  // 모바일 터치 지원
   classImgLists[i].addEventListener("touchstart", processTouchStart);
 }
