@@ -1,4 +1,4 @@
-// 전체페이지 스크롤 함수 구현
+// 전체 화면 스크롤 함수 구현
 const backToTop = document.getElementById("backtotop");
 
 // 스크롤 동작이 일어날 때 버튼 보여주기
@@ -12,7 +12,7 @@ function checkScroll() {
   }
 }
 
-// 버튼을 누르면 화면 상단으로 올리기
+// 버을 누르면 화면 상단으로 올리기
 function moveBackToTop() {
   if (window.pageYOffset > 0) {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -26,7 +26,9 @@ backToTop.addEventListener("click", moveBackToTop);
 
 // 오른쪽 버튼
 function transformNext(event) {
+  // 현재 클릭 이벤트를 받은 요소, 즉 slide-next 클래스를 가진 요소
   const slideNext = event.target;
+  // slide-next 클래스를 가진 요소 이전 요소는 slide-prev 클래스를 가진 요소
   const slidePrev = slideNext.previousElementSibling;
 
   const classList = slideNext.parentElement.parentElement.nextElementSibling;
@@ -71,7 +73,7 @@ function transformPrev(event) {
     // 위치를 왼쪽으로 260이동
     activeLi = Number(activeLi) - 260;
 
-    // 강의카드가 ul태그 너비보다 작으면 왼쪽버튼 비활성화
+    // 강의카드가 ul태그 너비보다 작으면 PREV버튼 비활성화
     if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
       slidePrev.style.color = "#cfd8dc";
       slidePrev.classList.remove("slide-prev-hover");
@@ -96,11 +98,12 @@ for (let i = 0; i < slidePrevList.length; i++) {
     slidePrevList[i].parentElement.parentElement.nextElementSibling;
   let liList = classList.getElementsByTagName("li");
 
-  // 강의카드가 ul태그 너비보다 넘치면, 왼쪽(prev)버튼은 활성화, 오른쪽(next)버튼은 현재 맨 첫 카드 위치이므로 비활성화
+  // 강의카드가 ul 태그 너비보다 넘치면, 왼쪽(prev)버튼은 활성화, 오른쪽(next)버튼은 현재 맨 첫 카드 위치이므로 비활성화
   if (classList.clientWidth < liList.length * 260) {
     slidePrevList[i].classList.add("slide-prev-hover");
     slidePrevList[i].addEventListener("click", transformPrev);
   } else {
+    //강의카드가 ul 태그 너비보다 넘치지 않으면, PREV, NEXT 버튼 불필요하므로, 아예 삭제
     const arrowContainer = slidePrevList[i].parentElement;
     arrowContainer.removeChild(slidePrevList[i].nextElementSibling);
     arrowContainer.removeChild(slidePrevList[i]);
@@ -142,7 +145,7 @@ function processTouchStart(event) {
   currentImg.addEventListener("mousemove", processTouchMove);
   currentImg.addEventListener("mouseup", processTouchEnd);
 
-  // 모바일 터치 지원
+  // 터치 지원
   currentImg.addEventListener("touchmove", processTouchMove);
   currentImg.addEventListener("touchend", processTouchEnd);
 
@@ -155,10 +158,11 @@ function processTouchEnd(event) {
   event.preventDefault();
 
   if (mouseStart) {
+    // 드래그중(mousemove), 드래그 끝났을 때(mouseup)
     currentImg.removeEventListener("mousemove", processTouchMove);
     currentImg.removeEventListener("mouseup", processTouchEnd);
 
-    // 모바일 터치 지원
+    // 터치 지원
     currentImg.removeEventListener("touchmove", processTouchMove);
     currentImg.removeEventListener("touchend", processTouchEnd);
 
@@ -195,6 +199,6 @@ const classImgLists = document.querySelectorAll("ul li img");
 for (let i = 0; i < classImgLists.length; i++) {
   // 해당 요소에 마우스를 누르면 드래그를 시작할 수 있으므로 이벤트 걸기
   classImgLists[i].addEventListener("mousedown", processTouchStart);
-  // 모바일 터치 지원
+  // 터치 지원
   classImgLists[i].addEventListener("touchstart", processTouchStart);
 }
