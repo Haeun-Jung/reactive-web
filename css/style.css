@@ -59,18 +59,18 @@ header {
 }
 
 .head-container .head-brand,
-.head-blog {
+.head-instagram {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 .head-container .head-brand a:hover,
-.head-container .head-blog a:hover {
+.head-container .head-instagram a:hover {
   color: #2186c4;
   cursor: pointer;
 }
 
-.head-container .head-blog {
+.head-container .head-instagram {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -170,19 +170,19 @@ section {
   font-size: 0.9rem;
 }
 
-.python-style {
+.join-style {
   color: #2186c4;
 }
 
-.analysis-style {
+.alarm-style {
   color: #ff8066;
 }
 
-.ai-style {
+.tip-style {
   color: #f7df1e;
 }
 
-.vue-style {
+.company-style {
   color: #2e7d32;
 }
 
@@ -253,7 +253,8 @@ section {
 }
 
 .class-image {
-  max-width: 240px;
+  width: 240px;
+  height: 200px;
   border-radius: 8px 8px 0 0;
 }
 
