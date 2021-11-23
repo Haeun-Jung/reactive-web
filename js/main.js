@@ -12,7 +12,7 @@ function checkScroll() {
   }
 }
 
-// 버을 누르면 화면 상단으로 올리기
+//  누르면 화면 상단으로 올리기
 function moveBackToTop() {
   if (window.pageYOffset > 0) {
     window.scrollTo({ top: 0, behavior: "smooth" });
